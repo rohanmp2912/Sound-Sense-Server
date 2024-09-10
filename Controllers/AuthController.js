@@ -1,34 +1,51 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const UserModel = require("../Models/User");
+const PlayerModel = require("../Models/Player");
 
 
 const signup = async (req, res) => {
     try {
         const { name, email, password } = req.body;
+
+        // Check if the user already exists
         const user = await UserModel.findOne({ email });
         if (user) {
             return res.status(409)
-                .json({ message: 'User is already exist, you can login', success: false });
+                .json({ message: 'User already exists, you can login', success: false });
         }
-        const userModel = new UserModel({ name, email, password });
-        userModel.password = await bcrypt.hash(password, 10);
-        await userModel.save();
-        res.status(201)
-            .json({
-                message: "Signup successfully",
-                success: true
-            })
-    } catch (err) {
-        console.log(err.message)
-        res.status(500)
-            .json({
-                message: "Internal server errror",
-                success: false
-            })
-    }
-}
 
+        // Create new User
+        const userModel = new UserModel({ name, email, password });
+        userModel.password = await bcrypt.hash(password, 10); // Hash the password
+        await userModel.save(); // Save the user
+
+        // Create new Player linked to the User
+        const newPlayer = new PlayerModel({
+            user: userModel._id,  // Link to the newly created User
+            curr_x: 0,            // Default starting position
+            curr_y: 0,
+            score: 0,
+            days_active: 0,
+            last_active_date: Date.now(),
+            current_level: 1
+        });
+        await newPlayer.save(); // Save the player data
+
+        // Respond with success
+        res.status(201).json({
+            message: "Signup successfully, Player created",
+            success: true
+        });
+
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).json({
+            message: "Internal server error",
+            success: false
+        });
+    }
+};
 
 const login = async (req, res) => {
     try {
