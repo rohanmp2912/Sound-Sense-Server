@@ -8,31 +8,27 @@ const signup = async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
-        // Check if the user already exists
         const user = await UserModel.findOne({ email });
         if (user) {
             return res.status(409)
                 .json({ message: 'User already exists, you can login', success: false });
         }
 
-        // Create new User
         const userModel = new UserModel({ name, email, password });
-        userModel.password = await bcrypt.hash(password, 10); // Hash the password
-        await userModel.save(); // Save the user
+        userModel.password = await bcrypt.hash(password, 10); 
+        await userModel.save(); 
 
-        // Create new Player linked to the User
         const newPlayer = new PlayerModel({
-            user: userModel._id,  // Link to the newly created User
-            curr_x: 0,            // Default starting position
+            user: userModel._id,  
+            curr_x: 0,            
             curr_y: 0,
             score: 0,
             days_active: 0,
             last_active_date: Date.now(),
             current_level: 1
         });
-        await newPlayer.save(); // Save the player data
+        await newPlayer.save(); 
 
-        // Respond with success
         res.status(201).json({
             message: "Signup successfully, Player created",
             success: true
@@ -62,29 +58,25 @@ const login = async (req, res) => {
                 .json({ message: errorMsg, success: false });
         }
 
-        // Fetch the corresponding Player document
         const player = await PlayerModel.findOne({ user: user._id });
         if (!player) {
             return res.status(404)
                 .json({ message: "Player data not found", success: false });
         }
 
-        // Check if last_active_date is today
         const today = new Date().toDateString();
         const lastActiveDate = new Date(player.last_active_date).toDateString();
 
         if (lastActiveDate !== today) {
-            // Update days_active and last_active_date
             player.days_active += 1;
-            player.last_active_date = new Date();  // Set to current date
+            player.last_active_date = new Date();  
             await player.save();
         }
 
-        // Generate JWT Token
         const jwtToken = jwt.sign(
             { email: user.email, _id: user._id },
             process.env.JWT_SECRET,
-            { expiresIn: '24h' }
+            { expiresIn: '3d' }
         );
 
         res.status(200).json({
