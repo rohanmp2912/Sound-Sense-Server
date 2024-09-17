@@ -31,6 +31,10 @@ const PlayerSchema = new Schema({
     current_level: {
         type: Number,
         default: 1
+    },
+    treasuresCollected: {
+        type: [Number], 
+        default: []     
     }
 });
 

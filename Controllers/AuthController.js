@@ -25,7 +25,8 @@ const signup = async (req, res) => {
             score: 0,
             days_active: 0,
             last_active_date: Date.now(),
-            current_level: 1
+            current_level: 1,
+            treasuresCollected: []
         });
         await newPlayer.save(); 
 
