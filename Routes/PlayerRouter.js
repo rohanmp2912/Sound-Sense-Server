@@ -1,7 +1,8 @@
 const router = require('express').Router();
-const { getXY, getTreasureArray } = require('../Controllers/PlayerController')
+const { getXY, getTreasureArray, addTreasureBox } = require('../Controllers/PlayerController')
 
 router.get('/getXY', getXY);
 router.get('/getTreasureArray', getTreasureArray);
+router.post('/addTreasureBox', addTreasureBox)
 
 module.exports = router;
