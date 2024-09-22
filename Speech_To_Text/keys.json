@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "soundsense-436407",
+  "private_key_id": "a8578f33d2e2a488eac65fba6a97b3085869370e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCuhvtQi2FKvH+j\n8e5MTha79MRARMjazFdd2PHqQIK7rAvYXXW79yr8nuE60NfuGnDBKuuQ/djW9vTx\nuNNyMwfNpb0wYWx/gtj7EYge63cypuPX3sE+Sp7T8DU8XHBmu2tYSlAXQlmRNSiO\nY1lXOmtf6pIXEYeIhTzLrQubTQiv78HEsAJfHMZuC8QSZRW23p5Hm9ms8WwwYMu+\nWB6ZT0+Us/fsbbTS+sbq9/SDdeH/knlgb0bYt4aZIKcE4GmiMtCjgJsHzRT8VJT9\nS1wVoVMRkNWQZzWlo5A6XcpH7mUVhvhlTPNO7A0qpXscu093VCqboPVF4ms6lnz1\nIw9ltmZ1AgMBAAECggEABiA4xq1Nv0N523WiHqLdthUzpOnafvY4hCkZkgECVbdb\n5xPzY6NGVVL3pt/ZDxjLJ7dA83g62eNrL5Iu4c2cEtd5b4RL5vc0dIOQr+fQlEI6\nscNg1ws5eJ5FesE9NMM+qP0FbfuR4es9aYS1MxRFhpADjAm9JHPrcV65OedB9yLi\nrG/foEFkB1sZc6pOIF+2C7actLCcBdg9a40yZCf6TN9QLtosG24oMby3C3obwOVm\n9wmQXo0e8X2wRTkXm5dWYKPRCbtOaHcwkvMhH8ihxaeJ1GXDRccXW7BZHdm7Hu5K\nko7cuYiwDY/GfMQShOoLxR/RTAfZ5cbzBkXMNScKNQKBgQDnxwrEsp06lXbRr4Aw\nMhD5INl8IJIfK6SS++VIW8N+7xlRQOVX+DznTTOcMaSrx4ZFIKYqQP+mWplgbndI\nsblLnVjd+KKszsvwmK9ZIzB9SyCYFy42caF/3jl/CT5dHIL2iXQOIfcRWDxnnaYx\nsxCPYeY14vNs7Sl7YZKnx6Xb7wKBgQDAxEVqLLzMH+c/UAoNi0auFNfCo3wxjdAm\nYhQZkU4cTW7Cn0BdHwsTOouJv07LH0AK8wyUzuZW4jM+GjWx+68NgMXztwYvhTyN\nv7aZ5o9goYfHg+CiN6PcoqgxLmtel7Qx1zxt+pvZxu4F5WfFjb6A8Uomt0YHW7AP\nkvQHSNPP2wKBgCdH6YBKkTETka6Z4szIP24pbhKGZp1XxS2P+VzZCHnjxdOqfvP4\nw0GkKOII29KtHwlqLh8tIuarpiDct+SfEjtJcH02HUPSTGf7SIR/3UDu0ZhVHWTm\nvysvm2j3RRV8tolX5E5c3UWYQayB4F+97EmQmvZ4/y5vxz7822EKCgcLAoGATOU+\nh3cnLQpA9fmYuQRpAoJf+025+g6HDPis6fITxaiB2XMreroqcdY12ZIN/WsO4g9I\nYogSTHBZXpmX99LdZraKwIivF/+/QxBJ6CSX50UoY8dQsYUegaIFE/FfdVFw2Tzx\n5zFEQGBhjMqRVbYQW2FlYgJUFhVWKzBE1i8QB2cCgYBnVAEkGAqV5VlBbkEFq2oM\nQ88BlumZoLi7r+nX+09rSKIt2fBG1v9WIlVWAhvIVU1UywC6onMp8y9a0DHZeThF\njp0OjrCMMG6bXjj2GU9vN9xs3ufb34RlwnenvzmhZde/NigbLLGWRACMWfJsy1oA\nwKQbveRfAeA3TB0f9dP73A==\n-----END PRIVATE KEY-----\n",
+  "client_email": "soundsenseservice@soundsense-436407.iam.gserviceaccount.com",
+  "client_id": "114681460937304433064",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/soundsenseservice%40soundsense-436407.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
