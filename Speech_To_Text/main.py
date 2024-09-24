@@ -4,7 +4,7 @@ from google.cloud import speech
 
 # Set the paths for your client file and audio file
 client_file = r'C:\Users\tejas\Documents\7th SEM\Major_Project_Final\Sound-Sense-Server\Speech_To_Text\keys2.json'
-audio_file = r'C:\Users\tejas\Documents\7th SEM\Major_Project_Final\Sound-Sense-Server\Speech_To_Text\leaf_big_mono.wav'
+audio_file = r'C:\Users\tejas\Documents\7th SEM\Major_Project_Final\Sound-Sense-Server\Speech_To_Text\audio\leaf_big_mono.wav'
 output_file = r'C:\Users\tejas\Documents\7th SEM\Major_Project_Final\Sound-Sense-Server\Speech_To_Text\transcription_output.txt'
 
 # Load credentials and initialize the Speech client
