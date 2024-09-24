@@ -3,8 +3,8 @@ from google.oauth2 import service_account
 from google.cloud import speech
 
 # Set the paths for your client file and audio file
-client_file = r'C:\Users\tejas\Documents\7th SEM\Major_Project_Final\Sound-Sense-Server\Speech_To_Text\keys.json'
-audio_file = r'C:\Users\tejas\Documents\7th SEM\Major_Project_Final\Sound-Sense-Server\Speech_To_Text\aa_mono.wav'
+client_file = r'C:\Users\tejas\Documents\7th SEM\Major_Project_Final\Sound-Sense-Server\Speech_To_Text\keys2.json'
+audio_file = r'C:\Users\tejas\Documents\7th SEM\Major_Project_Final\Sound-Sense-Server\Speech_To_Text\leaf_big_mono.wav'
 output_file = r'C:\Users\tejas\Documents\7th SEM\Major_Project_Final\Sound-Sense-Server\Speech_To_Text\transcription_output.txt'
 
 # Load credentials and initialize the Speech client
@@ -16,11 +16,14 @@ with io.open(audio_file, 'rb') as f:
     content = f.read()
     audio = speech.RecognitionAudio(content=content)
 
-# Configure the recognition settings
+# Configure the recognition settings with `single_utterance` enabled
 config = speech.RecognitionConfig(
+    model="latest_short",
     encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
     sample_rate_hertz=44100,
-    language_code='kn-IN'
+    language_code='kn-IN',
+    enable_automatic_punctuation=True,  # Optional: Add punctuation if needed
+    # single_utterance=True               # Enable single utterance mode
 )
 
 # Perform speech-to-text
