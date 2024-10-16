@@ -85,8 +85,36 @@ const addTreasureBox = async (req, res) => {
     }
 };
 
+const addScore = async (req, res) => {
+    try {
+        const token = req.headers.authorization.split(' ')[1];
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        const player = await PlayerModel.findOne({ user: decoded._id });
+        if (!player) {
+            return res.status(404).json({ score: null });
+        }
+
+        const { level } = req.body;
+
+        // Scoring logic: Level 1 -> 10 points, Level 2 -> 20 points
+        let scoreToAdd = level === 1 ? 10 : level === 2 ? 20 : 0;
+
+        // Update player's score
+        player.score += scoreToAdd;
+
+        await player.save();
+
+        return res.status(200).json({ score: player.score });
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).json({ score: null });
+    }
+};
+
 module.exports = {
     getXY,
     getTreasureArray,
-    addTreasureBox
+    addTreasureBox,
+    addScore
 };
