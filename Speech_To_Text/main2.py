@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
 from google.oauth2 import service_account
 from google.cloud import speech
+from flask_cors import CORS
 import io
 import os
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 client_file = r'C:\Users\tejas\Documents\7th SEM\Major_Project_Final\Sound-Sense-Server\Speech_To_Text\keys2.json'
 
@@ -38,20 +40,11 @@ def transcribe_audio():
         transcriptions = []
         for result in response.results:
             transcriptions.append(result.alternatives[0].transcript)
+
+        return jsonify({"message": transcriptions[0] if transcriptions else "No transcription found"})
         
-        # Writing the transcription to a file
-        output_file_path = r'C:\Users\tejas\Documents\7th SEM\Major_Project_Final\Sound-Sense-Server\Speech_To_Text\transcriptions.txt'
-        with open(output_file_path, 'a', encoding='utf-8') as f:
-            f.write(f"Transcription for {file.filename}:\n")
-            f.write("\n".join(transcriptions) + "\n\n")
-        
-        print(transcriptions)
-        return jsonify({"transcription": transcriptions}), 200
-    
     except Exception as e:
-        # Print the error to the console
-        print(f"Error occurred: {str(e)}")
-        return jsonify({"message": f"Internal server error: {str(e)}"}), 500
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True)
