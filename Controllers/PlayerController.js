@@ -141,11 +141,41 @@ const updateCoordinates = async (req, res) => {
     }
 };
 
+const resetPlayerData = async (req, res) => {
+    try {
+        const token = req.headers.authorization.split(' ')[1];
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        const player = await PlayerModel.findOne({ user: decoded._id });
+        if (!player) {
+            return res.status(404).json({ message: "Player not found", success: false });
+        }
+
+        // Reset treasures and score
+        player.treasuresCollected = [];
+        player.score = 0;
+
+        await player.save();
+
+        return res.status(200).json({
+            message: "Player data reset successfully",
+            success: true
+        });
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).json({
+            message: "Internal server error",
+            success: false
+        });
+    }
+};
+
 
 module.exports = {
     getXY,
     getTreasureArray,
     addTreasureBox,
     addScore,
-    updateCoordinates 
+    updateCoordinates,
+    resetPlayerData
 };
