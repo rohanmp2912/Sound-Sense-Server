@@ -151,9 +151,10 @@ const resetPlayerData = async (req, res) => {
             return res.status(404).json({ message: "Player not found", success: false });
         }
 
-        // Reset treasures and score
         player.treasuresCollected = [];
         player.score = 0;
+        player.curr_x = 0;
+        player.curr_y = 0;
 
         await player.save();
 
@@ -169,6 +170,7 @@ const resetPlayerData = async (req, res) => {
         });
     }
 };
+
 
 
 module.exports = {
