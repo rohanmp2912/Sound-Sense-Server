@@ -112,9 +112,40 @@ const addScore = async (req, res) => {
     }
 };
 
+const updateCoordinates = async (req, res) => {
+    try {
+        const token = req.headers.authorization.split(' ')[1];
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        const player = await PlayerModel.findOne({ user: decoded._id });
+        if (!player) {
+            return res.status(404).json({ message: "Player not found", success: false });
+        }
+
+        const { newX, newY } = req.body;
+
+        player.curr_x = newX;
+        player.curr_y = newY;
+
+        await player.save();
+
+        return res.status(200).json({
+            curr_x: player.curr_x,
+            curr_y: player.curr_y
+        });
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).json({
+            message: "Internal server error"
+        });
+    }
+};
+
+
 module.exports = {
     getXY,
     getTreasureArray,
     addTreasureBox,
-    addScore
+    addScore,
+    updateCoordinates 
 };
