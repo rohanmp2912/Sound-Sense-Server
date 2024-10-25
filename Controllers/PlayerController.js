@@ -153,7 +153,7 @@ const resetPlayerData = async (req, res) => {
 
         player.treasuresCollected = [];
         player.score = 0;
-        player.curr_x = 0;
+        player.curr_x = 750;
         player.curr_y = 0;
 
         await player.save();
