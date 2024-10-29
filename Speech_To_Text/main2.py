@@ -8,7 +8,7 @@ import os
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-client_file = r'C:\Users\tejas\Documents\7th SEM\Major_Project_Final\Sound-Sense-Server\Speech_To_Text\keys2.json'
+client_file = r'C:\Users\rohan\OneDrive\Documents\final_year_project\Sound-Sense-Server\Speech_To_Text\keys2.json'
 
 credentials = service_account.Credentials.from_service_account_file(client_file)
 client = speech.SpeechClient(credentials=credentials)
