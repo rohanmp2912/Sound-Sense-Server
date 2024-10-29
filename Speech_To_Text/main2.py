@@ -6,7 +6,7 @@ import io
 import os
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app) 
 
 client_file = r'C:\Users\rohan\OneDrive\Documents\final_year_project\Sound-Sense-Server\Speech_To_Text\keys2.json'
 
